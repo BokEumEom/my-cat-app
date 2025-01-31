@@ -1,5 +1,4 @@
 // src/components/CatBreedList.jsx
-import React from "react";
 import CatBreedCard from "./CatBreedCard";
 import styles from "../styles/CatBreedList.module.css";
 
@@ -9,11 +8,14 @@ function CatBreedList({ breeds }) {
   }
 
   return (
-    <div className={styles.grid}>
-      {breeds.map((breed) => (
-        <CatBreedCard key={breed.id} breed={breed} />
-      ))}
-    </div>
+    <section className={styles.container}>
+      <h2 className={styles.title}>🐾 고양이 품종 리스트</h2>
+      <div className={styles.grid}>
+        {breeds.map((breed) => (
+          <CatBreedCard key={breed.id} breed={breed} />
+        ))}
+      </div>
+    </section>
   );
 }
 

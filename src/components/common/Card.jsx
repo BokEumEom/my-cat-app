@@ -1,6 +1,4 @@
 // src/components/common/Card.jsx
-import React from "react";
-
 function Card({ image, title, description, onClick }) {
   return (
     <div className="card" onClick={onClick}>

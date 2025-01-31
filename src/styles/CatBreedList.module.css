@@ -1,12 +1,30 @@
 /* src/styles/CatBreedList.module.css */
 
+.container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* 반응형 그리드 레이아웃 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
 
+/* 데이터가 없을 때 */
 .noData {
   text-align: center;
   color: gray;
+  font-size: 14px;
+  padding: 20px;
 }

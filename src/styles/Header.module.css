@@ -1,0 +1,58 @@
+/* src/styles/Header.module.css */
+
+/* 전체 헤더 스타일 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff9800;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 로고 스타일 */
+.logo a {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+/* 네비게이션 스타일 */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 네비게이션 링크 스타일 */
+.navLink {
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 다크 모드 토글 버튼 스타일 */
+.themeToggle {
+  background: white;
+  color: #ff9800;
+  padding: 8px;
+  border-radius: 50%;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.8);
+}

@@ -1,6 +1,7 @@
 // src/pages/HomePage.jsx
-import React from "react";
+import { useState } from "react";
 import { useFetchBreeds } from "../hooks/useFetchBreeds";
+import Banner from "../components/Banner";
 import SearchBar from "../components/SearchBar";
 import CatBreedList from "../components/CatBreedList";
 import Loader from "../components/common/Loader";
@@ -8,7 +9,8 @@ import styles from "../styles/HomePage.module.css";
 
 function HomePage() {
   const { breeds, loading, error } = useFetchBreeds();
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleBreeds, setVisibleBreeds] = useState(6);
 
   const filteredBreeds = breeds.filter((breed) =>
     breed.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -16,29 +18,16 @@ function HomePage() {
 
   return (
     <div className={styles.container}>
-      {/* 헤더 */}
-      <header className={styles.header}>
-        <h1 className={styles.title}>🐱 Cat Info</h1>
-        <button className={styles.darkModeBtn} onClick={() => alert("다크 모드 추가 예정!")}>
-          🌙 다크 모드
-        </button>
-      </header>
 
-      {/* 검색창 */}
-      <div className={styles.searchContainer}>
-        <SearchBar query={searchQuery} setQuery={setSearchQuery} />
-      </div>
+      {/* 랜덤 배너 */}
+      <Banner />
 
-      {/* 로딩 상태 */}
-      {loading && <Loader />}
-      {error && <p className={styles.errorText}>{error}</p>}
-
-      {/* 인기 품종 가로 스크롤 */}
+      {/* 인기 품종 (5개) */}
       <section className={styles.popularSection}>
         <h2>🏆 인기 품종</h2>
         <div className={styles.popularList}>
           {breeds.slice(0, 5).map((breed) => (
-            <div key={breed.id} className={styles.popularCard}>
+            <div key={breed.id} className={styles.popularItem}>
               <img src={breed.image?.url} alt={breed.name} className={styles.popularImage} />
               <p>{breed.name}</p>
             </div>
@@ -46,16 +35,22 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 전체 품종 리스트 */}
-      <section className={styles.breedSection}>
-        <h2>🐱 모든 품종</h2>
-        <CatBreedList breeds={filteredBreeds} />
-      </section>
+      {/* 검색창 */}
+      <SearchBar query={searchQuery} setQuery={setSearchQuery} />
 
-      {/* 푸터 */}
-      <footer className={styles.footer}>
-        ⓒ 2025 Cat Info - 모든 권리 보유
-      </footer>
+      {/* 로딩 상태 */}
+      {loading && <Loader />}
+      {error && <p className={styles.errorText}>{error}</p>}
+
+      {/* 검색 결과 or 전체 품종 리스트 */}
+      <CatBreedList breeds={searchQuery ? filteredBreeds : breeds.slice(0, visibleBreeds)} />
+
+      {/* 더보기 버튼 */}
+      {!searchQuery && visibleBreeds < breeds.length && (
+        <button className={styles.loadMoreBtn} onClick={() => setVisibleBreeds(visibleBreeds + 6)}>
+          더보기
+        </button>
+      )}
     </div>
   );
 }
