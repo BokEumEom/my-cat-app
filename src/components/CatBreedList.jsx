@@ -9,7 +9,7 @@ function CatBreedList({ breeds }) {
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>🐾 고양이 품종 리스트</h2>
+      <h2 className={styles.title}>🐾 고양이 리스트</h2>
       <div className={styles.grid}>
         {breeds.map((breed) => (
           <CatBreedCard key={breed.id} breed={breed} />

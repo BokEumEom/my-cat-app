@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useFetchBreeds } from "../hooks/useFetchBreeds";
 import { useSearch } from "../hooks/useSearch";
+import { MagnifyingGlassIcon, ChevronDownIcon, StarIcon } from "@heroicons/react/24/solid"; // Heroicons 추가
 import Banner from "../components/Banner";
 import SearchBar from "../components/SearchBar";
 import CatBreedList from "../components/CatBreedList";
@@ -22,7 +23,7 @@ function HomePage() {
 
       {/* 인기 품종 (5개) */}
       <section className={styles.popularSection}>
-        <h2>🏆 인기 품종</h2>
+        <h2>🏆 인기 고양이</h2>
         <div className={styles.popularList}>
           {breeds.slice(0, 5).map((breed) => (
             <div key={breed.id} className={styles.popularItem}>
@@ -34,7 +35,10 @@ function HomePage() {
       </section>
 
       {/* 검색창 */}
-      <SearchBar query={query} setQuery={setQuery} />
+      <div className={styles.searchWrapper}>
+        <SearchBar query={query} setQuery={setQuery} />
+        <MagnifyingGlassIcon className={styles.searchIcon} /> {/* 🔍 아이콘 적용 */}
+      </div>
 
       {/* 로딩 상태 */}
       {loading && <Loader />}
@@ -46,7 +50,7 @@ function HomePage() {
       {/* 더보기 버튼 */}
       {!query && visibleBreeds < breeds.length && (
         <button className={styles.loadMoreBtn} onClick={() => setVisibleBreeds(visibleBreeds + 6)}>
-          더보기
+          더보기 <ChevronDownIcon className={styles.loadMoreIcon} /> {/* ⬇️ 아이콘 적용 */}
         </button>
       )}
     </div>

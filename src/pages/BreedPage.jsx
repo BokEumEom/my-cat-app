@@ -34,12 +34,12 @@ function BreedPage() {
     <div className={styles.container}>
       <h1 className={styles.title}>{breed.name}</h1>
 
-      {/* 이미지 로드 확인 및 대체 이미지 추가 */}
+      {/* 이미지 표시: 대체 이미지 적용 */}
       <div className={styles.imageWrapper}>
         {breed.image?.url ? (
           <img src={breed.image.url} alt={breed.name} className={styles.image} />
         ) : (
-          <div className={styles.noImage}>이미지 없음</div>
+          <div className={styles.noImage}>이미지를 불러올 수 없습니다.</div>
         )}
       </div>
 

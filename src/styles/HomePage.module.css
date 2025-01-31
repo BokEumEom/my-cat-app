@@ -7,17 +7,32 @@
   padding: 20px;
 }
 
-/* 🔍 검색 버튼 */
-.searchButton {
-  background: white;
-  color: #ff9800;
-  padding: 8px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+/* 검색창 스타일 */
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
-/* 🏆 인기 품종 섹션 */
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 15px;
+  color: #ffcc00;
+}
+
+/* 인기 품종 */
 .popularSection {
   margin-top: 20px;
 }
@@ -25,76 +40,54 @@
 .popularList {
   display: flex;
   overflow-x: auto;
-  gap: 15px;
+  gap: 10px;
   padding-bottom: 10px;
   scrollbar-width: none;
-  scroll-snap-type: x mandatory;
 }
 
 .popularList::-webkit-scrollbar {
   display: none;
 }
 
-/* 🐱 인기 품종 아이템 */
 .popularItem {
-  flex: 0 0 150px; /* 가로 크기 조정 */
+  min-width: 120px;
   background: white;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 8px;
   text-align: center;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s ease-in-out;
-  scroll-snap-align: start;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.popularItem:hover {
-  transform: scale(1.05);
-}
-
-/* 🐾 품종 이미지 */
 .popularImage {
   width: 100%;
-  height: 100px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
-/* 🎯 "더보기" 버튼 */
+/* 더보기 버튼 */
 .loadMoreBtn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
+  padding: 10px;
+  margin-top: 10px;
   background-color: #ff9800;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  touch-action: manipulation; /* 모바일 터치 개선 */
+  transition: background 0.2s ease-in-out;
 }
 
 .loadMoreBtn:hover {
   background-color: #e68a00;
 }
 
-/* 📱 반응형 그리드 - 작은 화면에서는 2열, 큰 화면에서는 3~4열 */
-@media (min-width: 600px) {
-  .popularList {
-    justify-content: center;
-  }
-
-  .popularItem {
-    flex: 0 0 180px;
-  }
-}
-
-@media (min-width: 900px) {
-  .popularList {
-    gap: 20px;
-  }
-
-  .popularItem {
-    flex: 0 0 200px;
-  }
+.loadMoreIcon {
+  width: 20px;
+  height: 20px;
 }
