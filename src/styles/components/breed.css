@@ -1,0 +1,16 @@
+/* BreedPage 스타일 */
+.breed-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.breed-container img {
+  width: 300px;
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.breed-container p {
+  margin-top: 10px;
+  font-size: 16px;
+}

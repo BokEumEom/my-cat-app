@@ -1,0 +1,13 @@
+/* HomePage 스타일 */
+.home {
+  text-align: center;
+}
+
+.search-bar {
+  margin: 20px 0;
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+}
