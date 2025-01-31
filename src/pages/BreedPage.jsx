@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCatBreedById } from "../api/catApi";
 import Loader from "../components/common/Loader";
+import styles from "../styles/BreedPage.module.css";
 
 function BreedPage() {
   const { id } = useParams(); // URL에서 품종 ID 가져오기
@@ -27,15 +28,24 @@ function BreedPage() {
   }, [id]);
 
   if (loading) return <Loader />;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (error) return <p className={styles.errorText}>{error}</p>;
 
   return (
-    <div>
-      <h1>{breed.name}</h1>
-      <img src={breed.image?.url} alt={breed.name} style={{ width: "300px" }} />
-      <p><strong>출신:</strong> {breed.origin}</p>
-      <p><strong>성격:</strong> {breed.temperament}</p>
-      <p>{breed.description}</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{breed.name}</h1>
+
+      {/* 이미지 로드 확인 및 대체 이미지 추가 */}
+      <div className={styles.imageWrapper}>
+        {breed.image?.url ? (
+          <img src={breed.image.url} alt={breed.name} className={styles.image} />
+        ) : (
+          <div className={styles.noImage}>이미지 없음</div>
+        )}
+      </div>
+
+      <p className={styles.info}><strong>출신:</strong> {breed.origin}</p>
+      <p className={styles.info}><strong>성격:</strong> {breed.temperament}</p>
+      <p className={styles.description}>{breed.description}</p>
     </div>
   );
 }
