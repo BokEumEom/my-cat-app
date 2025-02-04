@@ -1,21 +1,13 @@
-// src/components/Banner.jsx
-import { useEffect, useState } from "react";
+import { useFetchRandomCat } from "../hooks/useFetchRandomCat";
 import styles from "../styles/Banner.module.css";
 
 function Banner() {
-  const [image, setImage] = useState("");
-
-  useEffect(() => {
-    async function fetchRandomImage() {
-      const res = await fetch("https://api.thecatapi.com/v1/images/search");
-      const data = await res.json();
-      setImage(data[0]?.url);
-    }
-    fetchRandomImage();
-  }, []);
+  const { data: image, isLoading, error } = useFetchRandomCat();
 
   return (
     <div className={styles.banner}>
+      {isLoading && <p className={styles.loadingText}>이미지 불러오는 중...</p>}
+      {error && <p className={styles.errorText}>이미지를 불러오지 못했습니다.</p>}
       {image && <img src={image} alt="Random Cat" className={styles.image} />}
     </div>
   );

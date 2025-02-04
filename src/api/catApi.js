@@ -1,4 +1,3 @@
-// src/api/catApi.js
 const API_BASE_URL = "https://api.thecatapi.com/v1";
 const API_KEY = "live_5wTKGCTaR1ftnySLIGyqFpsxX1z4lhIsaiFWGY45hnqTemrJya2H8fNgkTuApe23"; // The Cat API에서 발급받은 키
 
@@ -37,7 +36,8 @@ export async function getCatBreedById(breedId) {
       });
       if (imageResponse.ok) {
         const imageData = await imageResponse.json();
-        breed.image = { url: imageData.url }; // 품종 객체에 이미지 URL 추가
+        // 이미지 id와 URL 모두 저장
+        breed.image = { id: imageData.id, url: imageData.url };
       }
     }
 
@@ -45,5 +45,56 @@ export async function getCatBreedById(breedId) {
   } catch (error) {
     console.error("API 오류:", error);
     return null;
+  }
+}
+
+// ★ 즐겨찾기 관련 함수들 ★
+
+// 1. 즐겨찾기 목록 조회
+export async function getFavourites() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/favourites`, {
+      headers: { "x-api-key": API_KEY },
+    });
+    if (!response.ok) throw new Error("즐겨찾기 데이터를 불러오는 중 오류 발생");
+    return await response.json();
+  } catch (error) {
+    console.error("API 오류:", error);
+    return [];
+  }
+}
+
+// 2. 즐겨찾기 추가  
+// image_id와 (선택적) sub_id를 전달합니다. (여기서는 간단하게 "default-user" 사용)
+export async function addFavourite(image_id, sub_id = "default-user") {
+  try {
+    const response = await fetch(`${API_BASE_URL}/favourites`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY,
+      },
+      body: JSON.stringify({ image_id, sub_id }),
+    });
+    if (!response.ok) throw new Error("즐겨찾기 추가 중 오류 발생");
+    return await response.json();
+  } catch (error) {
+    console.error("API 오류:", error);
+    throw error;
+  }
+}
+
+// 3. 즐겨찾기 삭제
+export async function removeFavourite(favourite_id) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/favourites/${favourite_id}`, {
+      method: "DELETE",
+      headers: { "x-api-key": API_KEY },
+    });
+    if (!response.ok) throw new Error("즐겨찾기 삭제 중 오류 발생");
+    return await response.json();
+  } catch (error) {
+    console.error("API 오류:", error);
+    throw error;
   }
 }

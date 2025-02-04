@@ -43,10 +43,7 @@
   gap: 10px;
   padding-bottom: 10px;
   scrollbar-width: none;
-}
-
-.popularList::-webkit-scrollbar {
-  display: none;
+  scroll-snap-type: x mandatory; /* 스크롤 스냅 추가 */
 }
 
 .popularItem {
@@ -56,6 +53,14 @@
   border-radius: 8px;
   text-align: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  cursor: pointer; /* 🔹 클릭 가능하도록 변경 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.popularItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .popularImage {
@@ -80,11 +85,12 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .loadMoreBtn:hover {
   background-color: #e68a00;
+  transform: scale(1.02); /* 호버 시 약간 확대 */
 }
 
 .loadMoreIcon {
