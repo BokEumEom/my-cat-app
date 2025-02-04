@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useFetchBreeds } from "../hooks/useFetchBreeds";
 import Loader from "../components/common/Loader";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { ExclamationTriangleIcon, ChevronLeftIcon } from "@heroicons/react/24/solid"; // 🔹 Heroicons 추가
 import styles from "../styles/BreedPage.module.css";
 
 function BreedPage() {
@@ -25,8 +25,9 @@ function BreedPage() {
 
   return (
     <div className={styles.container}>
+      {/* 🔹 Heroicons 아이콘을 사용한 "뒤로가기 버튼" */}
       <button onClick={() => navigate(-1)} className={styles.backButton} aria-label="이전 페이지로 이동">
-        ←
+        <ChevronLeftIcon className={styles.backIcon} />
       </button>
 
       <a href="#description" className={styles.skipLink}>
