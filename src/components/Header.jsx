@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import styles from "../styles/Header.module.css";
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -14,22 +12,9 @@ function Header() {
         <Link to="/">Cats See</Link>
       </h1>
 
-      {/* 모바일 햄버거 메뉴 버튼 */}
-      <button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </button>
-
-      {/* 네비게이션 메뉴 */}
-      <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
-        <NavLink
-          to="/favorites"
-          className={({ isActive }) =>
-            isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
-          }
-        >
-          ⭐ My Cat
-        </NavLink>
-        <button onClick={toggleTheme} className={styles.themeToggle}>
+      {/* 내비게이션 메뉴 (즐겨찾기 메뉴 제거) */}
+      <nav className={styles.nav}>
+        <button onClick={toggleTheme} className={styles.themeToggle} type="button">
           {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
         </button>
       </nav>

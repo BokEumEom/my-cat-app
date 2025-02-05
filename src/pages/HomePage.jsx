@@ -7,6 +7,7 @@ import Banner from "../components/Banner";
 import SearchBar from "../components/SearchBar";
 import CatBreedList from "../components/CatBreedList";
 import Loader from "../components/common/Loader";
+import FloatingMenu from "../components/FloatingMenu";
 import styles from "../styles/HomePage.module.css";
 
 function HomePage() {
@@ -63,6 +64,9 @@ function HomePage() {
           더보기 <ChevronDownIcon className={styles.loadMoreIcon} />
         </button>
       )}
+
+      {/* 플로팅 메뉴 추가 */}
+      <FloatingMenu />
     </div>
   );
 }
