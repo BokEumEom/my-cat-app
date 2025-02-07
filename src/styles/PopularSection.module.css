@@ -1,8 +1,9 @@
-/* 인기 품종 */
+/* 섹션 전체 레이아웃 */
 .popularSection {
   margin-top: 20px;
 }
 
+/* 타이틀 스타일 */
 .title {
   font-size: 18px;
   font-weight: bold;
@@ -10,6 +11,7 @@
   margin-bottom: 15px;
 }
 
+/* 인기 품종 리스트 스타일 */
 .popularList {
   display: flex;
   overflow-x: auto;
@@ -19,15 +21,17 @@
   scroll-snap-type: x mandatory; /* 스크롤 스냅 추가 */
 }
 
+/* 웹킷 브라우저에서 스크롤바 숨기기 */
+.popularList::-webkit-scrollbar {
+  display: none;
+}
+
+/* 각 카드 스타일: 카드 크기를 이미지 크기에 맞게 약간 확대 */
 .popularItem {
-  min-width: 120px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
+  min-width: 120px; /* 이미지가 크게 보이도록 너비를 늘림 */
   text-align: center;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   scroll-snap-align: start;
-  cursor: pointer; /* 🔹 클릭 가능하도록 변경 */
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -36,9 +40,17 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* 이미지 스타일: 이미지 높이를 늘려 크게 노출 */
 .popularImage {
   width: 100%;
-  height: 80px;
+  height: 120px;  /* 높이를 80px에서 120px로 증가 */
   object-fit: cover;
   border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+/* 품종 이름 텍스트: 폰트 사이즈를 줄임 */
+.popularItem p {
+  font-size: 12px; /* 텍스트 크기를 줄임 */
+  margin: 0;
 }
