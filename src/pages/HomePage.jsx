@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useFetchBreeds, useFetchPopularBreeds } from "../hooks/useFetchBreeds";
 import { useSearch } from "../hooks/useSearch";
-import { useNavigate } from "react-router-dom"; // 🔹 BreedPage로 이동을 위한 useNavigate 추가
 import { MagnifyingGlassIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import Header from "../components/Header";
 import Banner from "../components/Banner";
+import PopularSection from "../components/PopularSection";
 import SearchBar from "../components/SearchBar";
 import CatBreedList from "../components/CatBreedList";
 import Loader from "../components/common/Loader";
@@ -17,33 +18,17 @@ function HomePage() {
     breed.name.toLowerCase().includes(query.toLowerCase())
   );
   const [visibleBreeds, setVisibleBreeds] = useState(6);
-  const navigate = useNavigate(); // 🔹 페이지 이동을 위한 useNavigate 훅
 
   return (
     <div className={styles.container}>
+      {/* 헤더 컴포넌트 추가 */}
+      <Header />
+
       {/* 랜덤 배너 */}
       <Banner />
 
-      {/* 인기 품종 (5개) */}
-      <section className={styles.popularSection}>
-        <h2>🏆 인기 고양이</h2>
-        <div className={styles.popularList}>
-          {popularBreeds?.map((breed) => (
-            <div 
-              key={breed.id} 
-              className={styles.popularItem} 
-              onClick={() => navigate(`/breed/${breed.id}`)} // 🔹 클릭 시 BreedPage 이동
-            >
-              <img 
-                src={breed.image?.url} 
-                alt={breed.name} 
-                className={styles.popularImage} 
-              />
-              <p>{breed.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* 인기 품종 섹션 (컴포넌트 분리) */}
+      <PopularSection popularBreeds={popularBreeds} />
 
       {/* 검색창 */}
       <div className={styles.searchWrapper}>

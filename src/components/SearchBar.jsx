@@ -6,7 +6,7 @@ function SearchBar({ query, setQuery }) {
     <input
       className={styles.searchBar}
       type="text"
-      placeholder="🐱 고양이 품종을 검색하세요..."
+      placeholder="🐱 고양이를 찾아보세요..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
     />
