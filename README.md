@@ -1,8 +1,79 @@
-# React + Vite
+# The Cat API를 활용한 고양이 정보 앱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 애플리케이션은 **The Cat API**를 활용하여 다양한 고양이 품종과 관련 이미지를 제공하는 앱입니다. 고양이를 사랑하는 사용자들이 인기 품종, 품종별 상세 정보, 검색 기능 및 즐겨찾기 기능을 통해 원하는 정보를 쉽고 빠르게 확인할 수 있도록 설계되었습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 앱 소개
+
+이 앱은 고양이 애호가들을 위한 정보 플랫폼으로, 다음과 같은 주요 기능들을 제공합니다:
+
+- **고양이 품종 정보 제공**  
+  The Cat API를 통해 전 세계의 다양한 고양이 품종에 대한 정보와 이미지를 실시간으로 불러옵니다.
+
+- **인기 고양이 품종 캐러셀**  
+  인기 품종을 한눈에 볼 수 있도록 캐러셀 형태로 이미지를 노출하여, 시각적으로 즐거운 경험을 제공합니다.
+
+- **검색 기능**  
+  사용자가 원하는 고양이 품종을 쉽게 검색할 수 있는 기능을 제공합니다.
+
+- **상세 정보 페이지**  
+  각 품종을 클릭하면, 해당 품종의 상세 정보와 추가 이미지를 확인할 수 있습니다.
+
+- **즐겨찾기 기능**  
+  좋아하는 고양이 품종을 즐겨찾기에 추가하여 언제든지 쉽게 접근할 수 있습니다.
+
+- **반응형 디자인**  
+  다양한 디바이스(데스크탑, 태블릿, 모바일)에서 최적의 화면 구성을 제공하는 반응형 UI를 구현하였습니다.
+
+---
+
+## 주요 기능
+
+- **실시간 데이터 연동**:  
+  The Cat API를 통해 최신 고양이 품종 정보와 이미지를 불러와 사용자에게 제공.
+
+- **빠르고 직관적인 탐색**:  
+  검색, 캐러셀, 상세 정보 페이지 등 다양한 기능을 통해 사용자가 원하는 정보를 빠르게 찾을 수 있음.
+
+- **사용자 맞춤 인터랙션**:  
+  즐겨찾기 기능 등 사용자 인터랙션을 강화하여 보다 개인화된 정보 제공.
+
+- **미려한 UI/UX**:  
+  깔끔하고 현대적인 디자인과 애니메이션 효과를 통해 사용자 경험을 극대화.
+
+---
+
+## 개발 환경
+
+이 애플리케이션은 최신 웹 개발 기술을 바탕으로 구축되었습니다:
+
+- **React**:  
+  사용자 인터페이스 구축을 위한 주요 라이브러리.
+
+- **Vite**:  
+  빠른 번들링과 개발 환경 제공을 위한 도구로, HMR(Hot Module Replacement)을 지원하여 개발 중 코드 변경 시 즉각적인 반영이 가능합니다.
+
+- **ESLint**:  
+  코드 품질 유지를 위한 린팅 도구로, 일관된 코드 스타일과 잠재적인 오류를 사전에 방지합니다.
+
+- **React Router**:  
+  페이지 간의 라우팅을 관리하여, 다양한 페이지(홈, 상세 정보 등)를 원활하게 이동할 수 있도록 지원합니다.
+
+- **The Cat API**:  
+  외부 API를 통해 고양이 품종 정보와 이미지를 제공받아 앱 내에서 활용합니다.
+
+또한, React Fast Refresh를 위한 공식 플러그인([@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) 또는 [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc))을 사용하여 개발 생산성을 높였습니다.
+
+---
+
+## 빠른 시작
+
+1. **저장소 클론 및 의존성 설치**
+
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   npm install
+   # 또는 yarn 사용 시:
+   # yarn install
