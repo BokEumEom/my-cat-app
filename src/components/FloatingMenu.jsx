@@ -5,7 +5,7 @@ import {
   HomeIcon,
   StarIcon,
   InformationCircleIcon,
-  PlusIcon,
+  Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/solid"; // 필요한 아이콘들 임포트
 import styles from "../styles/FloatingMenu.module.css";
@@ -54,7 +54,7 @@ function FloatingMenu() {
         {menuOpen ? (
           <XMarkIcon className={styles.floatingIcon} />
         ) : (
-          <PlusIcon className={styles.floatingIcon} />
+          <Bars3Icon className={styles.floatingIcon} />
         )}
       </button>
     </div>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import basicKnowledgeData from "../data/basicKnowledgeData";
 import BasicKnowledgeModal from "../components/BasicKnowledgeModal";
+import FloatingMenu from "../components/FloatingMenu";
 import styles from "../styles/BasicKnowledgePage.module.css";
 
 const MAX_SNIPPET_LENGTH = 100;
@@ -68,6 +69,9 @@ function BasicKnowledgePage() {
           onClose={() => setSelectedItem(null)}
         />
       )}
+
+      {/* 플로팅 메뉴 추가 */}
+      <FloatingMenu />
     </div>
   );
 }

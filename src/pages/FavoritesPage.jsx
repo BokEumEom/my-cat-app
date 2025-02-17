@@ -3,6 +3,7 @@ import { TrashIcon } from "@heroicons/react/24/solid"; // 트래시 아이콘
 import { useFavourites } from "../hooks/useFavourites";
 import Loader from "../components/common/Loader";
 import Modal from "../components/common/Modal"; // 공통 모달 컴포넌트 활용
+import FloatingMenu from "../components/FloatingMenu";
 import styles from "../styles/FavoritesPage.module.css";
 
 function FavoritesPage() {
@@ -77,6 +78,9 @@ function FavoritesPage() {
           onCancel={() => setShowModal(false)}
         />
       )}
+
+      {/* 플로팅 메뉴 추가 */}
+      <FloatingMenu />
     </div>
   );
 }
